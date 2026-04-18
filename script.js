@@ -83,20 +83,50 @@ function showLb(index) {
   }, 180);
 }
 
-/* Gallery tap vs hover handling */
+/* Gallery click → lightbox */
 galleryItems.forEach((item, i) => {
-  let tapped = false;
   item.addEventListener('click', () => openLightbox(i));
-
-  /* On touch devices: first tap highlights, second opens */
-  item.addEventListener('touchstart', () => {
-    if (!tapped) {
-      tapped = true;
-      item.querySelector('.gallery-overlay').style.opacity = '1';
-      setTimeout(() => { tapped = false; }, 1800);
-    }
-  }, { passive: true });
 });
+
+/* Gallery — drag to scroll */
+(function () {
+  const track = document.querySelector('.gallery-track');
+  const btnPrev = document.querySelector('.gallery-arrow-prev');
+  const btnNext = document.querySelector('.gallery-arrow-next');
+  if (!track) return;
+
+  let isDragging = false, startX = 0, scrollLeft = 0;
+
+  track.addEventListener('mousedown', e => {
+    isDragging = true;
+    track.classList.add('dragging');
+    startX = e.pageX - track.offsetLeft;
+    scrollLeft = track.scrollLeft;
+  });
+  document.addEventListener('mouseup', () => {
+    isDragging = false;
+    track.classList.remove('dragging');
+  });
+  document.addEventListener('mousemove', e => {
+    if (!isDragging) return;
+    e.preventDefault();
+    const x = e.pageX - track.offsetLeft;
+    track.scrollLeft = scrollLeft - (x - startX) * 1.4;
+  });
+
+  /* Arrow buttons */
+  const scrollBy = 600;
+  btnPrev.addEventListener('click', () => track.scrollBy({ left: -scrollBy, behavior: 'smooth' }));
+  btnNext.addEventListener('click', () => track.scrollBy({ left:  scrollBy, behavior: 'smooth' }));
+
+  /* Hide/show arrows based on scroll position */
+  function updateArrows() {
+    btnPrev.classList.toggle('hidden', track.scrollLeft <= 10);
+    btnNext.classList.toggle('hidden', track.scrollLeft >= track.scrollWidth - track.clientWidth - 10);
+  }
+  track.addEventListener('scroll', updateArrows, { passive: true });
+  updateArrows();
+})();
 
 lbClose.addEventListener('click', closeLightbox);
 lbPrev.addEventListener('click', (e) => { e.stopPropagation(); showLb(lbIndex - 1); });
@@ -227,7 +257,7 @@ form.addEventListener('submit', e => {
   btn.disabled = true;
 
   setTimeout(() => {
-    feedback.textContent = '✓ Thank you! We'll be in touch soon to start planning your story.';
+    feedback.textContent = "\u2713 Thank you! We\u2019ll be in touch soon to start planning your story.";
     feedback.classList.add('success');
     form.reset();
     btn.textContent = 'Send Enquiry';

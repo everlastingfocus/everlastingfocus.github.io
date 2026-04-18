@@ -380,17 +380,22 @@ h2.light { color: var(--white); }
 /* Gallery horizontal scroll */
 .gallery-scroll-wrap {
   position: relative;
+  width: 100%;
+  overflow: hidden;   /* clips the track so it doesn't break page layout */
 }
 .gallery-track {
   display: flex;
+  flex-direction: row;      /* explicit — prevents mobile vertical fallback */
+  flex-wrap: nowrap;        /* explicit — items must stay in one row */
+  align-items: stretch;
   gap: 6px;
+  width: 100%;
   overflow-x: auto;
   overflow-y: hidden;
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;        /* Firefox */
   cursor: grab;
-  padding-bottom: 2px;          /* prevent clipping box-shadow */
 }
 .gallery-track::-webkit-scrollbar { display: none; }
 .gallery-track.dragging { cursor: grabbing; scroll-snap-type: none; }
@@ -399,12 +404,11 @@ h2.light { color: var(--white); }
   position: relative;
   overflow: hidden;
   cursor: pointer;
-  flex-shrink: 0;
-  width: 300px;
+  flex: 0 0 300px;      /* flex-grow:0, flex-shrink:0, explicit width */
   height: 440px;
   scroll-snap-align: start;
 }
-.gallery-item.wide { width: 480px; }
+.gallery-item.wide { flex-basis: 480px; }
 
 .gallery-item img {
   transition: transform 0.65s ease;
@@ -1103,8 +1107,8 @@ button, a, input, select, textarea {
   .about-text .btn-solid { display: block; text-align: center; }
 
   /* Gallery — smaller items on tablet */
-  .gallery-item { width: 240px; height: 360px; }
-  .gallery-item.wide { width: 380px; }
+  .gallery-item { flex-basis: 240px; height: 360px; }
+  .gallery-item.wide { flex-basis: 380px; }
 
   /* Packages */
   .packages-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
@@ -1157,21 +1161,12 @@ button, a, input, select, textarea {
   .about-text p { font-size: 0.93rem; }
   .section-sub { font-size: 0.93rem; margin-bottom: 2rem; }
 
-  /* Gallery — mobile sizes, show overlay hint */
-  .gallery-item { width: 200px; height: 300px; }
-  .gallery-item.wide { width: 300px; }
+  /* Gallery — mobile sizes (overlay stays hidden, tap to open) */
+  .gallery-item { flex-basis: 200px; height: 280px; }
+  .gallery-item.wide { flex-basis: 300px; }
   .gallery-arrow { width: 36px; height: 36px; font-size: 0.9rem; }
-  .gallery-arrow-prev { left: 0.5rem; }
-  .gallery-arrow-next { right: 0.5rem; }
-  .gallery-overlay {
-    opacity: 1;
-    background: rgba(59,42,32,0.18);
-  }
-  .gallery-overlay span {
-    font-size: 0.6rem;
-    padding: 0.4rem 0.9rem;
-    opacity: 0.8;
-  }
+  .gallery-arrow-prev { left: 0.4rem; }
+  .gallery-arrow-next { right: 0.4rem; }
 
   /* Packages + Process */
   .packages-grid { max-width: 100%; }

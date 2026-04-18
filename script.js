@@ -207,7 +207,7 @@ form.addEventListener('submit', e => {
   feedback.className = 'form-feedback';
   feedback.textContent = '';
 
-  const name  = form.querySelector('#f-name').value.trim();
+  const name  = (form.querySelector('#f-name').value.trim() + ' ' + form.querySelector('#f-lastname').value.trim()).trim();
   const email = form.querySelector('#f-email').value.trim();
   const emailRx = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 

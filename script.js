@@ -3,19 +3,37 @@
 ───────────────────────────────────────────── */
 
 /* ── NAV scroll effect ── */
-const navbar = document.getElementById('navbar');
+const navbar    = document.getElementById('navbar');
+const burger    = document.getElementById('burger');
+const navLinks  = document.getElementById('nav-links');
+const navOverlay = document.getElementById('nav-overlay');
+
 window.addEventListener('scroll', () => {
   navbar.classList.toggle('scrolled', window.scrollY > 60);
-});
+}, { passive: true });
 
 /* ── Burger menu ── */
-const burger = document.querySelector('.burger');
-const navLinks = document.querySelector('.nav-links');
+function openNav() {
+  burger.classList.add('open');
+  navLinks.classList.add('open');
+  navOverlay.classList.add('open');
+  burger.setAttribute('aria-expanded', 'true');
+  document.body.style.overflow = 'hidden';
+}
+function closeNav() {
+  burger.classList.remove('open');
+  navLinks.classList.remove('open');
+  navOverlay.classList.remove('open');
+  burger.setAttribute('aria-expanded', 'false');
+  document.body.style.overflow = '';
+}
+
 burger.addEventListener('click', () => {
-  navLinks.classList.toggle('open');
+  navLinks.classList.contains('open') ? closeNav() : openNav();
 });
+navOverlay.addEventListener('click', closeNav);
 navLinks.querySelectorAll('a').forEach(link => {
-  link.addEventListener('click', () => navLinks.classList.remove('open'));
+  link.addEventListener('click', closeNav);
 });
 
 /* ── Hero slideshow ── */
@@ -29,14 +47,16 @@ function nextSlide() {
 setInterval(nextSlide, 5500);
 
 /* ── Lightbox ── */
-const lightbox   = document.getElementById('lightbox');
-const lbImg      = document.getElementById('lb-img');
-const lbCaption  = document.getElementById('lb-caption');
-const lbClose    = document.querySelector('.lb-close');
-const lbPrev     = document.querySelector('.lb-prev');
-const lbNext     = document.querySelector('.lb-next');
+const lightbox    = document.getElementById('lightbox');
+const lbImg       = document.getElementById('lb-img');
+const lbCaption   = document.getElementById('lb-caption');
+const lbClose     = document.querySelector('.lb-close');
+const lbPrev      = document.querySelector('.lb-prev');
+const lbNext      = document.querySelector('.lb-next');
 const galleryItems = Array.from(document.querySelectorAll('.gallery-item'));
 let lbIndex = 0;
+
+lbImg.style.transition = 'opacity 0.18s ease';
 
 function openLightbox(index) {
   lbIndex = index;
@@ -63,22 +83,48 @@ function showLb(index) {
   }, 180);
 }
 
-lbImg.style.transition = 'opacity 0.18s ease';
-
+/* Gallery tap vs hover handling */
 galleryItems.forEach((item, i) => {
+  let tapped = false;
   item.addEventListener('click', () => openLightbox(i));
+
+  /* On touch devices: first tap highlights, second opens */
+  item.addEventListener('touchstart', () => {
+    if (!tapped) {
+      tapped = true;
+      item.querySelector('.gallery-overlay').style.opacity = '1';
+      setTimeout(() => { tapped = false; }, 1800);
+    }
+  }, { passive: true });
 });
+
 lbClose.addEventListener('click', closeLightbox);
-lbPrev.addEventListener('click', () => showLb(lbIndex - 1));
-lbNext.addEventListener('click', () => showLb(lbIndex + 1));
+lbPrev.addEventListener('click', (e) => { e.stopPropagation(); showLb(lbIndex - 1); });
+lbNext.addEventListener('click', (e) => { e.stopPropagation(); showLb(lbIndex + 1); });
 lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
 
 document.addEventListener('keydown', e => {
   if (!lightbox.classList.contains('open')) return;
-  if (e.key === 'Escape')      closeLightbox();
-  if (e.key === 'ArrowLeft')   showLb(lbIndex - 1);
-  if (e.key === 'ArrowRight')  showLb(lbIndex + 1);
+  if (e.key === 'Escape')     closeLightbox();
+  if (e.key === 'ArrowLeft')  showLb(lbIndex - 1);
+  if (e.key === 'ArrowRight') showLb(lbIndex + 1);
 });
+
+/* Lightbox swipe support */
+(function () {
+  let startX = 0, startY = 0;
+  lightbox.addEventListener('touchstart', e => {
+    startX = e.touches[0].clientX;
+    startY = e.touches[0].clientY;
+  }, { passive: true });
+  lightbox.addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].clientX - startX;
+    const dy = e.changedTouches[0].clientY - startY;
+    if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 50) {
+      dx < 0 ? showLb(lbIndex + 1) : showLb(lbIndex - 1);
+    }
+  }, { passive: true });
+})();
 
 /* ── Testimonials ── */
 const testimonials = document.querySelectorAll('.testimonial');
@@ -107,6 +153,23 @@ function startTTimer() {
 }
 startTTimer();
 
+/* Testimonials swipe support */
+(function () {
+  const track = document.querySelector('.testimonials-track');
+  let startX = 0;
+  track.addEventListener('touchstart', e => {
+    startX = e.touches[0].clientX;
+  }, { passive: true });
+  track.addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].clientX - startX;
+    if (Math.abs(dx) > 50) {
+      clearInterval(tTimer);
+      dx < 0 ? showTestimonial(tIndex + 1) : showTestimonial(tIndex - 1);
+      startTTimer();
+    }
+  }, { passive: true });
+})();
+
 /* ── Scroll reveal ── */
 const revealEls = document.querySelectorAll('.reveal');
 const revealObserver = new IntersectionObserver((entries) => {
@@ -116,10 +179,10 @@ const revealObserver = new IntersectionObserver((entries) => {
       revealObserver.unobserve(entry.target);
     }
   });
-}, { threshold: 0.12 });
+}, { threshold: 0.1 });
 revealEls.forEach(el => revealObserver.observe(el));
 
-/* ── Add reveal classes dynamically ── */
+/* Add reveal classes dynamically */
 function addReveal(selector, delay = 0) {
   document.querySelectorAll(selector).forEach((el, i) => {
     el.classList.add('reveal');
@@ -133,7 +196,6 @@ addReveal('.service-card', 0.1);
 addReveal('#testimonials .container');
 addReveal('#contact .contact-info');
 addReveal('#contact .contact-form-wrap');
-// Re-observe after adding classes
 document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
 /* ── Contact form ── */
@@ -160,7 +222,6 @@ form.addEventListener('submit', e => {
     return;
   }
 
-  /* Simulate send */
   const btn = form.querySelector('.form-submit');
   btn.textContent = 'Sending…';
   btn.disabled = true;

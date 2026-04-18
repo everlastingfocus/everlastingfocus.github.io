@@ -12,19 +12,20 @@
 <body>
 
   <!-- ───── NAV ───── -->
+  <div class="nav-overlay" id="nav-overlay"></div>
   <nav id="navbar">
     <div class="nav-inner">
       <a href="#hero" class="nav-logo">
         <img src="logo circle.png" alt="Everlasting Focus Logo" />
       </a>
-      <ul class="nav-links">
+      <ul class="nav-links" id="nav-links">
         <li><a href="#about">About</a></li>
         <li><a href="#gallery">Gallery</a></li>
         <li><a href="#services">Services</a></li>
         <li><a href="#testimonials">Kind Words</a></li>
         <li><a href="#contact" class="nav-cta">Book Us</a></li>
       </ul>
-      <button class="burger" aria-label="Open menu">
+      <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
     </div>

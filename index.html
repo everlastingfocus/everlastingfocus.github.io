@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Everlasting Focus · Photo & Film</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- ───── NAV ───── -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo">
+        <img src="logo circle.png" alt="Everlasting Focus Logo" />
+      </a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#testimonials">Kind Words</a></li>
+        <li><a href="#contact" class="nav-cta">Book Us</a></li>
+      </ul>
+      <button class="burger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ───── HERO ───── -->
+  <section id="hero">
+    <div class="hero-slides">
+      <div class="hero-slide active" style="background-image:url('first-kiss.png')"></div>
+      <div class="hero-slide" style="background-image:url('sunset-walk.png')"></div>
+      <div class="hero-slide" style="background-image:url('safari-love.png')"></div>
+      <div class="hero-slide" style="background-image:url('bride-glow.png')"></div>
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <p class="hero-tagline">Stories Captured · Memories Preserved</p>
+      <h1>Everlasting<br /><em>Focus</em></h1>
+      <p class="hero-sub">Wedding &amp; Lifestyle Photography &amp; Film</p>
+      <a href="#gallery" class="btn-ghost">View Our Work</a>
+    </div>
+    <div class="hero-scroll-hint">
+      <span></span>
+    </div>
+  </section>
+
+  <!-- ───── ABOUT ───── -->
+  <section id="about">
+    <div class="container about-grid">
+      <div class="about-images">
+        <div class="about-img-main">
+          <img src="bride-portrait.png" alt="Bride portrait" />
+        </div>
+        <div class="about-img-accent">
+          <img src="wedding-details.png" alt="Wedding details" />
+        </div>
+      </div>
+      <div class="about-text">
+        <p class="section-label">Who We Are</p>
+        <h2>A Husband &amp; Wife Duo</h2>
+        <p class="about-names">Ruan &amp; Alreta</p>
+        <p>We believe every love story is unique — full of quiet glances, joyful tears, and fleeting moments that deserve to be frozen in time forever. As a couple ourselves, we understand the intimacy and vulnerability of your day, which is why we pour our whole hearts into every frame we capture.</p>
+        <p>From the soft morning light of a bridal suite to the golden warmth of a sunset ceremony, we craft imagery that feels as timeless as the love it documents.</p>
+        <a href="#contact" class="btn-solid">Let's Connect</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───── GALLERY ───── -->
+  <section id="gallery">
+    <div class="container">
+      <p class="section-label">Our Work</p>
+      <h2>The Gallery</h2>
+      <p class="section-sub">Each image is a chapter of someone's forever.</p>
+    </div>
+
+    <div class="gallery-grid">
+      <div class="gallery-item tall" data-src="bride-portrait.png" data-caption="Bridal Portrait">
+        <img src="bride-portrait.png" alt="Bridal Portrait" />
+        <div class="gallery-overlay"><span>View</span></div>
+      </div>
+      <div class="gallery-item" data-src="wedding-details.png" data-caption="Wedding Details">
+        <img src="wedding-details.png" alt="Wedding Details" />
+        <div class="gallery-overlay"><span>View</span></div>
+      </div>
+      <div class="gallery-item" data-src="venue.png" data-caption="The Venue">
+        <img src="venue.png" alt="Venue" />
+        <div class="gallery-overlay"><span>View</span></div>
+      </div>
+      <div class="gallery-item tall" data-src="silhouette.png" data-caption="Silhouette">
+        <img src="silhouette.png" alt="Silhouette" />
+        <div class="gallery-overlay"><span>View</span></div>
+      </div>
+      <div class="gallery-item wide" data-src="golden-hour.png" data-caption="Golden Hour">
+        <img src="golden-hour.png" alt="Golden Hour" />
+        <div class="gallery-overlay"><span>View</span></div>
+      </div>
+      <div class="gallery-item tall" data-src="first-kiss.png" data-caption="First Kiss">
+        <img src="first-kiss.png" alt="First Kiss" />
+        <div class="gallery-overlay"><span>View</span></div>
+      </div>
+      <div class="gallery-item" data-src="framed-moments.png" data-caption="Framed in Nature">
+        <img src="framed-moments.png" alt="Framed in Nature" />
+        <div class="gallery-overlay"><span>View</span></div>
+      </div>
+      <div class="gallery-item" data-src="forest-bride.png" data-caption="Forest Gown">
+        <img src="forest-bride.png" alt="Forest Gown" />
+        <div class="gallery-overlay"><span>View</span></div>
+      </div>
+      <div class="gallery-item wide" data-src="safari-love.png" data-caption="Safari Love">
+        <img src="safari-love.png" alt="Safari Love" />
+        <div class="gallery-overlay"><span>View</span></div>
+      </div>
+      <div class="gallery-item" data-src="sunset-walk.png" data-caption="Sunset Walk">
+        <img src="sunset-walk.png" alt="Sunset Walk" />
+        <div class="gallery-overlay"><span>View</span></div>
+      </div>
+      <div class="gallery-item" data-src="bride-glow.png" data-caption="Bridal Glow">
+        <img src="bride-glow.png" alt="Bridal Glow" />
+        <div class="gallery-overlay"><span>View</span></div>
+      </div>
+      <div class="gallery-item tall" data-src="under-tree.png" data-caption="Under the Tree">
+        <img src="under-tree.png" alt="Under the Tree" />
+        <div class="gallery-overlay"><span>View</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───── LIGHTBOX ───── -->
+  <div id="lightbox" class="lightbox">
+    <button class="lb-close" aria-label="Close">&times;</button>
+    <button class="lb-prev" aria-label="Previous">&#8592;</button>
+    <button class="lb-next" aria-label="Next">&#8594;</button>
+    <div class="lb-content">
+      <img id="lb-img" src="" alt="" />
+      <p id="lb-caption"></p>
+    </div>
+  </div>
+
+  <!-- ───── SERVICES ───── -->
+  <section id="services">
+    <div class="services-bg" style="background-image:url('venue.png')">
+      <div class="services-overlay"></div>
+    </div>
+    <div class="container services-content">
+      <p class="section-label light">What We Offer</p>
+      <h2 class="light">Our Services</h2>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">&#9825;</div>
+          <h3>Wedding Photography</h3>
+          <p>Full-day coverage of every precious moment — from preparations to the last dance. Delivered as a timeless gallery of memories.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">&#9825;</div>
+          <h3>Wedding Film</h3>
+          <p>Cinematic wedding films that let you relive the day — the laughter, the tears, and the vows — for generations to come.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">&#9825;</div>
+          <h3>Lifestyle &amp; Couples</h3>
+          <p>Engagement shoots, anniversary sessions, and lifestyle portraits that capture your authentic connection in beautiful settings.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">&#9825;</div>
+          <h3>Photo &amp; Film Packages</h3>
+          <p>Combined packages tailored to your needs and budget. Receive both stunning stills and a moving film of your special day.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───── TESTIMONIALS ───── -->
+  <section id="testimonials">
+    <div class="container">
+      <p class="section-label">Kind Words</p>
+      <h2>What Our Couples Say</h2>
+      <div class="testimonials-track">
+        <div class="testimonial active">
+          <div class="testimonial-quote">&ldquo;</div>
+          <p>Ruan and Alreta made us feel so comfortable from the very first moment. They captured our day so beautifully — every single photo tells a story. We look at our album and are transported right back. Truly once-in-a-lifetime work.</p>
+          <div class="testimonial-author">
+            <strong>Mia &amp; Johan</strong>
+            <span>Married October 2025</span>
+          </div>
+        </div>
+        <div class="testimonial">
+          <div class="testimonial-quote">&ldquo;</div>
+          <p>We couldn't have asked for a better team to document our wedding. Everlasting Focus have such a soft, natural eye — nothing felt staged or forced. The film made us cry happy tears all over again. Absolutely worth every cent.</p>
+          <div class="testimonial-author">
+            <strong>Lize &amp; Andries</strong>
+            <span>Married January 2026</span>
+          </div>
+        </div>
+        <div class="testimonial">
+          <div class="testimonial-quote">&ldquo;</div>
+          <p>From the golden hour portraits to the little detail shots I never even noticed on the day — they caught it all. So professional, so warm, and so talented. Our photos are everything we dreamed of and more.</p>
+          <div class="testimonial-author">
+            <strong>Chanel &amp; Marco</strong>
+            <span>Married March 2026</span>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-dots">
+        <button class="dot active" data-index="0" aria-label="Testimonial 1"></button>
+        <button class="dot" data-index="1" aria-label="Testimonial 2"></button>
+        <button class="dot" data-index="2" aria-label="Testimonial 3"></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───── CONTACT ───── -->
+  <section id="contact">
+    <div class="container contact-grid">
+
+      <div class="contact-info">
+        <p class="section-label">Get In Touch</p>
+        <h2>Let's Tell Your Story</h2>
+        <p>We'd love to be part of your special day. Reach out and let's start the conversation about your dream shoot.</p>
+
+        <ul class="contact-details">
+          <li>
+            <div class="contact-icon">&#9742;</div>
+            <div>
+              <strong>Phone / WhatsApp</strong>
+              <a href="tel:0789920369">078 992 0369</a>
+            </div>
+          </li>
+          <li>
+            <div class="contact-icon">&#9993;</div>
+            <div>
+              <strong>Email</strong>
+              <a href="mailto:hello@everlastingfocus.co.za">hello@everlastingfocus.co.za</a>
+            </div>
+          </li>
+          <li>
+            <div class="contact-icon">&#10022;</div>
+            <div>
+              <strong>Based In</strong>
+              <span>South Africa · Available Nationwide</span>
+            </div>
+          </li>
+          <li>
+            <div class="contact-icon">&#9825;</div>
+            <div>
+              <strong>Instagram</strong>
+              <a href="https://instagram.com/everlastingfocus" target="_blank" rel="noopener">@everlastingfocus</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="contact-form-wrap">
+        <form id="contact-form" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="f-name">Your Name</label>
+              <input type="text" id="f-name" name="name" placeholder="Your full name" required />
+            </div>
+            <div class="form-group">
+              <label for="f-partner">Partner's Name</label>
+              <input type="text" id="f-partner" name="partner" placeholder="Partner's name" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="f-email">Email Address</label>
+              <input type="email" id="f-email" name="email" placeholder="your@email.com" required />
+            </div>
+            <div class="form-group">
+              <label for="f-phone">Phone Number</label>
+              <input type="tel" id="f-phone" name="phone" placeholder="e.g. 082 000 0000" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="f-date">Wedding / Session Date</label>
+              <input type="date" id="f-date" name="date" />
+            </div>
+            <div class="form-group">
+              <label for="f-service">Service Interested In</label>
+              <select id="f-service" name="service">
+                <option value="" disabled selected>Select a service…</option>
+                <option>Wedding Photography</option>
+                <option>Wedding Film</option>
+                <option>Photo &amp; Film Package</option>
+                <option>Lifestyle / Couples Session</option>
+                <option>Other</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group full">
+            <label for="f-message">Tell Us About Your Day</label>
+            <textarea id="f-message" name="message" rows="5" placeholder="Share your vision, venue, vibe…"></textarea>
+          </div>
+          <button type="submit" class="btn-solid form-submit">Send Enquiry</button>
+          <div id="form-feedback" class="form-feedback"></div>
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ───── FOOTER ───── -->
+  <footer id="footer">
+    <div class="footer-logo">
+      <img src="logo circle.png" alt="Everlasting Focus" />
+      <p>Everlasting Focus</p>
+      <em>Photo &amp; Film</em>
+    </div>
+    <p class="footer-tagline">✨ Stories Captured. Memories Preserved. ✨</p>
+    <p class="footer-copy">&copy; 2026 Everlasting Focus · All rights reserved</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

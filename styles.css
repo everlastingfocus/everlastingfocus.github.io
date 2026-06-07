@@ -368,6 +368,92 @@ h2.light { color: var(--white); }
 .about-text .btn-solid { margin-top: 1rem; }
 
 /* ─────────────────────────────────────────────
+   PORTFOLIOS
+───────────────────────────────────────────── */
+#portfolios { background: var(--cream-dark); }
+
+.portfolios-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-top: 3.5rem;
+}
+
+.portfolio-card {
+  background: var(--white);
+  padding: 2.5rem 2rem;
+  box-shadow: var(--shadow);
+  transition: transform var(--transition), box-shadow var(--transition);
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--cream-dark);
+}
+
+.portfolio-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 48px rgba(59,42,32,0.12);
+}
+
+.portfolio-card h3 {
+  font-family: var(--font-serif);
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: var(--mocha);
+  margin-bottom: 1.2rem;
+  border-bottom: 1px solid var(--cream-dark);
+  padding-bottom: 0.8rem;
+}
+
+.portfolio-links {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.portfolio-links li a {
+  font-size: 0.9rem;
+  color: var(--mocha-soft);
+  transition: color var(--transition), padding-left var(--transition);
+  display: inline-block;
+  position: relative;
+  padding-left: 1.2rem;
+}
+
+.portfolio-links li a::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--gold);
+  transition: transform var(--transition);
+}
+
+.portfolio-links li a:hover {
+  color: var(--gold);
+  padding-left: 1.5rem;
+}
+
+.portfolio-links li a:hover::before {
+  transform: translateX(3px);
+}
+
+.no-photos {
+  font-size: 0.85rem;
+  font-style: italic;
+  color: var(--rose);
+}
+
+@media (max-width: 1024px) {
+  .portfolios-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 600px) {
+  .portfolios-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+  .portfolio-card { padding: 2rem 1.5rem; }
+}
+
+/* ─────────────────────────────────────────────
    GALLERY
 ───────────────────────────────────────────── */
 #gallery {

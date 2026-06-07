@@ -222,6 +222,8 @@ function addReveal(selector, delay = 0) {
 addReveal('#about .about-images');
 addReveal('#about .about-text');
 addReveal('#gallery .container');
+addReveal('#portfolios .container');
+addReveal('.portfolio-card', 0.1);
 addReveal('.service-card', 0.1);
 addReveal('#testimonials .container');
 addReveal('#contact .contact-info');
